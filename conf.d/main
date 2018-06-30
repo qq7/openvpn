@@ -10,6 +10,8 @@ sed -i "/^#net.ipv4.ip_forward=1/ s/#//" /etc/sysctl.conf
 mkdir -p $EASY_RSA
 cp -u /usr/share/easy-rsa/* $EASY_RSA
 
+ln -s /etc/openvpn/easy-rsa/openssl-1.0.0.cnf /etc/openvpn/easy-rsa/openssl.cnf
+
 # tweak crl scripts for crl.jail
 for i in list-crl revoke-full; do
     sed -i 's|^\(CRL=\).*|\1"crl.jail/crl.pem"|' $EASY_RSA/$i
